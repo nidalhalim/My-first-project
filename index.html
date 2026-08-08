@@ -3,15 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <title>Mon premier projet</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f4ff;
+        padding-top: 80px;
+      }
+
+      h1 {
+        color: #2b4c9b;
+      }
+
+      p {
+        font-size: 20px;
+      }
+
+      button {
+        background-color: #2b4c9b;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
   </head>
+
   <body>
     <h1>Bonjour !</h1>
-
     <p id="message">Ma première page web est sur GitHub.</p>
 
-    <button onclick="changerMessage()">
-      Clique ici
-    </button>
+    <button onclick="changerMessage()">Clique ici</button>
 
     <script>
       function changerMessage() {
