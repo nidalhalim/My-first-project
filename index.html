@@ -2,28 +2,34 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
-    <title>Mon premier projet</title>
+    <title>Ma liste de tâches</title>
 
     <style>
       body {
         font-family: Arial, sans-serif;
-        text-align: center;
+        max-width: 600px;
+        margin: 80px auto;
+        padding: 0 20px;
         background-color: #f0f4ff;
-        padding-top: 80px;
       }
 
       h1 {
         color: #2b4c9b;
       }
 
-      p {
-        font-size: 20px;
+      .ajout {
+        display: flex;
+        gap: 8px;
       }
 
       input,
       button {
         padding: 12px;
         font-size: 16px;
+      }
+
+      input {
+        flex: 1;
       }
 
       button {
@@ -33,24 +39,53 @@
         border-radius: 8px;
         cursor: pointer;
       }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        padding: 12px;
+        background: white;
+        border-radius: 8px;
+      }
+
+      li button {
+        background-color: #b42318;
+        padding: 6px 10px;
+      }
     </style>
   </head>
 
   <body>
-    <h1>Bonjour !</h1>
+    <h1>Ma liste de tâches</h1>
 
-    <p id="message">Ma première page web est sur GitHub.</p>
+    <div class="ajout">
+      <input id="tache" type="text" placeholder="Écris une tâche">
+      <button onclick="ajouterTache()">Ajouter</button>
+    </div>
 
-    <input id="prenom" type="text" placeholder="Écris ton prénom">
-
-    <button onclick="direBonjour()">Dire bonjour</button>
+    <ul id="liste"></ul>
 
     <script>
-      function direBonjour() {
-        const prenom = document.getElementById("prenom").value;
+      function ajouterTache() {
+        const texte = document.getElementById("tache").value;
 
-        document.getElementById("message").textContent =
-          "Bonjour, " + prenom + " !";
+        if (texte === "") {
+          return;
+        }
+
+        const nouvelleTache = document.createElement("li");
+        nouvelleTache.textContent = texte;
+
+        const supprimer = document.createElement("button");
+        supprimer.textContent = "Supprimer";
+        supprimer.onclick = function () {
+          nouvelleTache.remove();
+        };
+
+        nouvelleTache.appendChild(supprimer);
+        document.getElementById("liste").appendChild(nouvelleTache);
+        document.getElementById("tache").value = "";
       }
     </script>
   </body>
