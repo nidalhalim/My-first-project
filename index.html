@@ -6,6 +6,18 @@
   </head>
   <body>
     <h1>Bonjour !</h1>
-    <p>Ma première page web est sur GitHub.</p>
+
+    <p id="message">Ma première page web est sur GitHub.</p>
+
+    <button onclick="changerMessage()">
+      Clique ici
+    </button>
+
+    <script>
+      function changerMessage() {
+        document.getElementById("message").textContent =
+          "Bravo, tu viens d'utiliser JavaScript !";
+      }
+    </script>
   </body>
 </html>
