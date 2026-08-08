@@ -5,35 +5,52 @@
     <title>Mon premier projet</title>
 
     <style>
-      <body>
-  <h1>Bonjour !</h1>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f4ff;
+        padding-top: 80px;
+      }
 
-  <p id="message">Ma première page web est sur GitHub.</p>
+      h1 {
+        color: #2b4c9b;
+      }
 
-  <input id="prenom" type="text" placeholder="Écris ton prénom">
+      p {
+        font-size: 20px;
+      }
 
-  <button onclick="direBonjour()">Dire bonjour</button>
+      input,
+      button {
+        padding: 12px;
+        font-size: 16px;
+      }
 
-  <script>
-    function direBonjour() {
-      const prenom = document.getElementById("prenom").value;
-
-      document.getElementById("message").textContent =
-        "Bonjour, " + prenom + " !";
-    }
-  </script>
-</body>
+      button {
+        background-color: #2b4c9b;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
 
   <body>
     <h1>Bonjour !</h1>
+
     <p id="message">Ma première page web est sur GitHub.</p>
 
-    <button onclick="changerMessage()">Clique ici</button>
+    <input id="prenom" type="text" placeholder="Écris ton prénom">
+
+    <button onclick="direBonjour()">Dire bonjour</button>
 
     <script>
-      function changerMessage() {
+      function direBonjour() {
+        const prenom = document.getElementById("prenom").value;
+
         document.getElementById("message").textContent =
-          "Bravo, tu viens d'utiliser JavaScript !";
+          "Bonjour, " + prenom + " !";
       }
     </script>
   </body>
