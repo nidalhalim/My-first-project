@@ -67,26 +67,48 @@
     <ul id="liste"></ul>
 
     <script>
+      let taches = JSON.parse(localStorage.getItem("taches")) || [];
+
+      function sauvegarderTaches() {
+        localStorage.setItem("taches", JSON.stringify(taches));
+      }
+
+      function afficherTaches() {
+        const liste = document.getElementById("liste");
+        liste.innerHTML = "";
+
+        taches.forEach(function (texte, index) {
+          const nouvelleTache = document.createElement("li");
+          nouvelleTache.textContent = texte;
+
+          const supprimer = document.createElement("button");
+          supprimer.textContent = "Supprimer";
+          supprimer.onclick = function () {
+            taches.splice(index, 1);
+            sauvegarderTaches();
+            afficherTaches();
+          };
+
+          nouvelleTache.appendChild(supprimer);
+          liste.appendChild(nouvelleTache);
+        });
+      }
+
       function ajouterTache() {
-        const texte = document.getElementById("tache").value;
+        const champ = document.getElementById("tache");
+        const texte = champ.value;
 
         if (texte === "") {
           return;
         }
 
-        const nouvelleTache = document.createElement("li");
-        nouvelleTache.textContent = texte;
-
-        const supprimer = document.createElement("button");
-        supprimer.textContent = "Supprimer";
-        supprimer.onclick = function () {
-          nouvelleTache.remove();
-        };
-
-        nouvelleTache.appendChild(supprimer);
-        document.getElementById("liste").appendChild(nouvelleTache);
-        document.getElementById("tache").value = "";
+        taches.push(texte);
+        sauvegarderTaches();
+        afficherTaches();
+        champ.value = "";
       }
+
+      afficherTaches();
     </script>
   </body>
 </html>
